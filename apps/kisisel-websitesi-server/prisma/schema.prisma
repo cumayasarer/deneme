@@ -1,0 +1,46 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Kullanici {
+  ad        String?
+  biyografi String?
+  createdAt DateTime @default(now())
+  ePosta    String?
+  id        String   @id @default(cuid())
+  soyad     String?
+  updatedAt DateTime @updatedAt
+}
+
+model Yetenek {
+  ad             String?
+  createdAt      DateTime @default(now())
+  id             String   @id @default(cuid())
+  updatedAt      DateTime @updatedAt
+  uzmanlikDuzeyi String?
+}
+
+model Proje {
+  aciklama        String?
+  baslangicTarihi DateTime?
+  baslik          String?
+  bitisTarihi     DateTime?
+  createdAt       DateTime  @default(now())
+  id              String    @id @default(cuid())
+  updatedAt       DateTime  @updatedAt
+}
+
+model Referans {
+  aciklama  String?
+  ad        String?
+  createdAt DateTime @default(now())
+  firma     String?
+  id        String   @id @default(cuid())
+  pozisyon  String?
+  updatedAt DateTime @updatedAt
+}
